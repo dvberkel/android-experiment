@@ -7,7 +7,7 @@
 BASE_DIR=`pwd`
 
 DOWNLOAD_DIRECTORY=sdk
-REMOTE_FILES=(http://raw.github.com/dvberkel/android-experiment/master/README.md)
+REMOTE_FILES=(https://raw.github.com/dvberkel/android-experiment/master/{README.md})
 
 echo "Installing Android SDK."
 
@@ -20,5 +20,14 @@ fi
 cd $DOWNLOAD_DIRECTORY
 for FILE in $REMOTE_FILES
 do
-    wget $FILE
+    START=`expr index $FILE '{'`
+    END=`expr index $FILE '}'`
+    LENGTH=$[ $END - $START - 1 ]
+    NAME=${FILE:START:LENGTH}
+    if [ ! -f $NAME ]
+    then
+	curl $FILE -o $NAME
+    fi
 done
+
+echo "Finished."
