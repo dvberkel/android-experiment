@@ -33,4 +33,10 @@ done
 
 find . -name '*.tgz' | xargs tar xfkvmz
 
+while read DIR
+do
+    cd "$DIR/tools"
+    ./android --verbose update sdk --no-ui
+done < <(find . -name 'android-sdk-*')
+
 echo "Finished."
