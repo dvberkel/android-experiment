@@ -26,8 +26,11 @@ do
     NAME=${FILE:START:LENGTH}
     if [ ! -f $NAME ]
     then
+	echo "Downloading" $FILE
 	curl $FILE -o $NAME
     fi
 done
+
+find . -name '*.tgz' | xargs tar xfkvmz
 
 echo "Finished."
