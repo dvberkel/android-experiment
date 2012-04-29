@@ -7,7 +7,7 @@
 BASE_DIR=`pwd`
 
 DOWNLOAD_DIRECTORY=sdk
-REMOTE_FILES=(https://raw.github.com/dvberkel/android-experiment/master/{README.md})
+REMOTE_FILES=(http://dl.google.com/android/{android-sdk_r18-linux.tgz})
 
 echo "Installing Android SDK."
 
